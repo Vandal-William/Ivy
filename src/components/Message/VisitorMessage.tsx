@@ -3,7 +3,7 @@ import './styles.scss'
 import { visitorMessageProps } from '../@types/MessagesProps/visitorMessageProps';
 import { moveLeftCharacter } from '../../selectors/characterAnimations/moveLeftCharacter';
 
-function VisitorMessage({isConnected, setConnection}: visitorMessageProps) {
+function VisitorMessage({ setConnection}: visitorMessageProps) {
 
 
   const handleClick = () => {
