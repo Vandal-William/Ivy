@@ -1,0 +1,96 @@
+.message {
+    font-size: 20px;
+    max-width: 350px;
+    min-width: 350px;
+    background: #fff;
+    padding: 10px;
+    position: absolute;
+    top: 16%;
+    left: 65%;
+    border-radius: 10px; /* Arrondi les coins */
+    border: 1px solid #ccc;
+    opacity: 0;
+    animation: appearMessage 1s forwards;
+
+    &-content {
+        color: #000;
+        padding: 10px;
+        opacity: 1
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 80px;
+        right: 340px;
+        border-width: 0px 50px 50px 50px;
+        border-style: solid;
+        border-color: transparent transparent #fff transparent;
+        transform: rotate(-90deg);
+        opacity: 1;
+    }
+
+    &-choice {
+        list-style-type: none;
+        width: 75%;
+        margin: auto;
+        opacity: 1;
+        &-li{
+            padding: 10px;
+            background: orange;
+            margin: 5px;
+            font-weight: bold;
+            border-radius: 5px;
+            opacity: 0;
+            animation: appearListItem 1s forwards;
+            cursor: pointer;
+        }
+        &-link {
+            text-decoration: none;
+            padding: 10px;
+            color: #000;
+            cursor: pointer;
+            &:hover{
+                color: #000;
+            }
+        }
+    }
+}
+
+@keyframes appearMessage {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes appearListItem {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-choice-li:nth-child(1) {
+    animation-delay: 1s; 
+}
+
+.message-choice-li:nth-child(2) {
+    animation-delay: 1.2s; 
+}
+
+.message-choice-li:nth-child(3) {
+    animation-delay: 1.4s; 
+}
+
+.message-choice-li:nth-child(4) {
+    animation-delay: 1.6s; 
+}

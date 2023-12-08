@@ -1,0 +1,32 @@
+.nav{
+    width: 100%;
+    padding: 5px;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    font-size: 50px;
+
+    &-wrapper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 95%;
+        margin: auto;
+    }
+    
+      &-brandName{
+        padding: 5px;
+        font-size: 75px;
+        display: flex;
+        flex-direction: column;
+        line-height: 52px;
+        color: orange;
+    }
+    
+      &-brd{
+        margin-left: 30px;
+        font-size: 20px;
+        color: #fff;
+        font-size: 40px;
+    }
+}
