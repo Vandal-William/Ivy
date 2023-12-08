@@ -1,9 +1,9 @@
 *{
     --background : black;
     --skin: #fed;
-    --eye : lightgreen;
-    --hair: rgb(163, 44, 0);
-    --shirt: pink;
+    --eye : #50C878;
+    --hair: #701C28;
+    --shirt: #000080;
     --belt: brown;
     --pants: lightblue;
     margin: 0;
@@ -229,7 +229,7 @@ body{
         80% 3%, /* épaule droite */
         86% 32%, /* bord droit manche droite */
         71% 33%, /* bord gauche manche droite */
-        70.5% 24%, /* sous épaule droit */
+        70.5% 26.5%, /* sous épaule droit */
         68% 57%, /*hanche droit */
         76% 66%, 
         84% 75%, 
@@ -270,5 +270,14 @@ body{
     }
     to {
         transform: translate(0%, -5%);
+    }
+}
+
+@keyframes returnPosition {
+    from {
+        transform: translate(0%, -5%);
+    }
+    to {
+        transform: translate(80%, -5%);
     }
 }

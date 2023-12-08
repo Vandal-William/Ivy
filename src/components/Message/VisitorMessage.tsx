@@ -1,14 +1,18 @@
 import { Link } from 'react-router-dom';
 import './styles.scss'
-import { visitorMessageProps } from '../@types/MessagesProps/visitorMessageProps';
-import { moveLeftCharacter } from '../../selectors/characterAnimations/moveLeftCharacter';
+import { moveLeftCharacter } from '../../selectors/characterAnimations/moveCharacter';
 
-function VisitorMessage({ setConnection}: visitorMessageProps) {
+function VisitorMessage() {
 
-
-  const handleClick = () => {
-    setConnection(true);
-    moveLeftCharacter();
+  console.log('Current pathname:', window.location.pathname);
+  function handleClick() {
+    if (window.location.pathname.includes('/Ivy/introduce')) {
+      console.log('Path includes "introduce"');
+      return;
+    } else {
+      console.log(window.location);
+      moveLeftCharacter();
+    }
   }
 
   return (
@@ -18,10 +22,9 @@ function VisitorMessage({ setConnection}: visitorMessageProps) {
       </p>
     
       <ul className='message-choice'>
-        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/connexion" >Me connecter</Link ></li>
-        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/signup" >M'inscrire</Link ></li>
-        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/introduce">Qui est tu ?</Link ></li>
-        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/resume">Pourquoi m'inscrire ?</Link ></li>
+        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/Ivy/connexion" >Me connecter</Link ></li>
+        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/Ivy/signup" >M'inscrire</Link ></li>
+        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/Ivy/introduce">Qui est tu ?</Link ></li>
       </ul>
     </div>
   );
