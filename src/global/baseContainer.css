@@ -1,0 +1,87 @@
+.base-container {
+    width: 600px;
+    max-height: 600px;
+    position: absolute;
+    background: #1a1a1a; /* Fond sombre pour contraster avec le fond noir du site */
+    border-radius: 10px;
+    overflow: auto;
+    right: 5%;
+    top: 0%;
+    z-index: 1;
+    padding: 30px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75); /* Ombre pour la profondeur */
+    opacity: 0; /* Initiallement invisible */
+    animation: appearAnimation 1s ease forwards 1s; 
+  }
+  
+  .title {
+    color: #ffa500; 
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .cancel-link {
+    text-align: end;
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  .close {
+    color: red;
+    font-size: 24px;
+    float: right;
+    transition: transform 0.3s ease; /* Animation au survol */
+  }
+  
+  .close:hover {
+    transform: scale(1.2);
+  }
+
+  .form{
+    width: 97%;
+  }
+  
+  .form-label {
+    font-size: 20px;
+    color: #fff;
+  }
+  
+  .form-input {
+    font-size: 20px;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .form-submit {
+    background-color: #ffcc00;
+    color: #000;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Animation au survol */
+  }
+  
+  .form-submit:hover {
+    background-color: #ffd633;
+  }
+
+  @keyframes appearAnimation {
+    from {
+      opacity: 0;
+      transform: translateY(-50px); /* Début de l'animation légèrement au-dessus */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0); /* Apparition à la position originale */
+    }
+  }
+  

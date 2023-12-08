@@ -26,7 +26,7 @@ function App() {
         <Character />
         <Routes>
           {isConnected ? "" : <Route path='/Ivy' element={<VisitorMessage />}/>}
-          <Route path='/connexion' element={<Connexion />}/>
+          <Route path='/Ivy/connexion' element={<Connexion />}/>
         </Routes>
       </div>
     </>

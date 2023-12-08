@@ -16,10 +16,10 @@ function VisitorMessage() {
       </p>
     
       <ul className='message-choice'>
-        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/connexion" >Me connecter</Link ></li>
-        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/signup" >M'inscrire</Link ></li>
-        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/introduce">Qui est tu ?</Link ></li>
-        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/resume">Pourquoi m'inscrire ?</Link ></li>
+        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/Ivy/connexion" >Me connecter</Link ></li>
+        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/Ivy/signup" >M'inscrire</Link ></li>
+        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/Ivy/introduce">Qui est tu ?</Link ></li>
+        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/Ivy/resume">Pourquoi m'inscrire ?</Link ></li>
       </ul>
     </div>
   );
