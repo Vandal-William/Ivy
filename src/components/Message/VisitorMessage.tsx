@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom';
 import './styles.scss'
-import { visitorMessageProps } from '../@types/MessagesProps/visitorMessageProps';
-import { moveLeftCharacter } from '../../selectors/characterAnimations/moveLeftCharacter';
+import { moveLeftCharacter } from '../../selectors/characterAnimations/moveCharacter';
 
-function VisitorMessage({ setConnection}: visitorMessageProps) {
+function VisitorMessage() {
 
 
   const handleClick = () => {
-    setConnection(true);
     moveLeftCharacter();
   }
 

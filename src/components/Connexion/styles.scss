@@ -1,7 +1,23 @@
 .connexion{
-    width: 500px;
+    width: 600px;
+    height: 700px;
     position: absolute;
-    padding: 20px;
     background: #fff;
+    border-radius: 5%;
+    right: 5%;
+    top: 0;
     z-index: 1;
+    &-title{
+        color: #000;
+    }
+}
+
+.cancel-link{
+    text-align: end;
+}
+.close{
+    color: red;
+    padding: 15px;
+    font-size: 20px;
+    text-align: end;
 }

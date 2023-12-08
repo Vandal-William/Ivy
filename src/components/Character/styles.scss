@@ -272,3 +272,12 @@ body{
         transform: translate(0%, -5%);
     }
 }
+
+@keyframes returnPosition {
+    from {
+        transform: translate(0%, -5%);
+    }
+    to {
+        transform: translate(80%, -5%);
+    }
+}
