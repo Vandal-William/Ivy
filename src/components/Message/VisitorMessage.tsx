@@ -4,9 +4,15 @@ import { moveLeftCharacter } from '../../selectors/characterAnimations/moveChara
 
 function VisitorMessage() {
 
-
-  const handleClick = () => {
-    moveLeftCharacter();
+  console.log('Current pathname:', window.location.pathname);
+  function handleClick() {
+    if (window.location.pathname.includes('/Ivy/introduce')) {
+      console.log('Path includes "introduce"');
+      return;
+    } else {
+      console.log(window.location);
+      moveLeftCharacter();
+    }
   }
 
   return (
@@ -19,7 +25,6 @@ function VisitorMessage() {
         <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/Ivy/connexion" >Me connecter</Link ></li>
         <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/Ivy/signup" >M'inscrire</Link ></li>
         <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/Ivy/introduce">Qui est tu ?</Link ></li>
-        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/Ivy/resume">Pourquoi m'inscrire ?</Link ></li>
       </ul>
     </div>
   );

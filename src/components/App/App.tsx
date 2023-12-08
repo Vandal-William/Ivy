@@ -6,6 +6,8 @@ import { useLocation } from 'react-router-dom';
 import Connexion from '../Connexion/Connexion';
 import { moveCharacterToInitialPosition } from '../../selectors/characterAnimations/moveCharacter';
 import VisitorMessage from '../Message/VisitorMessage';
+import SignUp from '../signUp/SignUp'
+import Introduce from '../Introduce/Introduce';
 
 function App() {
 
@@ -13,7 +15,7 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === '/Ivy') {
+    if (location.pathname === '/Ivy/') {
       moveCharacterToInitialPosition();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -25,8 +27,10 @@ function App() {
       <div className="scene">
         <Character />
         <Routes>
-          {isConnected ? "" : <Route path='/Ivy' element={<VisitorMessage />}/>}
+          {isConnected ? "" : <Route path='/Ivy/' element={<VisitorMessage />}/>}
           <Route path='/Ivy/connexion' element={<Connexion />}/>
+          <Route path='/Ivy/signup' element={<SignUp />}/>
+          <Route path='/Ivy/introduce' element={<Introduce />}/>
         </Routes>
       </div>
     </>
