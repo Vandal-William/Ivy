@@ -4,6 +4,12 @@ import userData from '../../Data/data.json';
 
 interface ConnexionProps {
   setIsConnected: React.Dispatch<React.SetStateAction<boolean>>;
+  addErrorMessage: (message: string) => void;
+  clearErrors: () => void;
+  connectionAttempt: number;
+  setConnectionAttempt: React.Dispatch<React.SetStateAction<number>>;
+  isButtonDisabled : boolean; 
+  setIsButtonDisabled : React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface User {
@@ -12,23 +18,44 @@ interface User {
   password: string;
 }
 
-function Connexion({ setIsConnected }: ConnexionProps) {
+function Connexion({
+   setIsConnected, 
+   addErrorMessage, 
+   clearErrors, 
+   connectionAttempt, 
+   setConnectionAttempt,
+   isButtonDisabled,
+  setIsButtonDisabled
+  }: ConnexionProps) {
 
   const navigate = useNavigate();
+
   const handleSubmit = (e: SyntheticEvent) => {
 
     e.preventDefault();
+
     const formData = new FormData(e.target as HTMLFormElement);
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
-
+    
     const foundUser = userData.users.find((user: User) => user.mail === email && user.password === password);
-
+    
     if (foundUser) {
+
       setIsConnected(true);
       navigate('/'); 
+      clearErrors();
+
     } else {
-      console.log('Utilisateur non trouvé');
+
+      addErrorMessage('Vos Identifiants sont incorrects.');
+      setConnectionAttempt(connectionAttempt + 1);
+
+      if (connectionAttempt === 2){
+        clearErrors()
+        setIsButtonDisabled(true);
+      }
+
     }
   }
 
@@ -41,7 +68,7 @@ function Connexion({ setIsConnected }: ConnexionProps) {
         <input className='form-input' type="email" name="email" id="email" />
         <label className='form-label' htmlFor="password">Mot de passe</label>
         <input className='form-input' type="password" name="password" id="password" />
-        <button className='form-submit'>Me connecter</button>
+        <button className='form-submit' style={isButtonDisabled ? {background: '#eaeaea', color: 'grey', cursor: 'default'} : {}} disabled={isButtonDisabled}>Me connecter</button>
       </form>
     </div>
   );

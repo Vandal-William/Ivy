@@ -1,0 +1,24 @@
+.error{
+    font-size: 20px;
+    max-width: 350px;
+    min-width: 350px;
+    background: #1a1a1a; /* Fond sombre pour contraster avec le fond noir du site */
+    padding: 20px;
+    position: absolute;
+    top: 1%;
+    left: 5%;
+    border-radius: 10px; /* Arrondi les coins */
+    color: #fff; /* Texte en blanc pour contraster avec le fond sombre */
+    opacity: 0;
+    animation: appearMessage 1s forwards;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 70px;
+        left: 5%;
+        border-width: 30px 50px 30px 0;
+        border-style: solid;
+        border-color: transparent #1a1a1a transparent transparent;
+        transform: rotate(-90deg);
+      }
+}
