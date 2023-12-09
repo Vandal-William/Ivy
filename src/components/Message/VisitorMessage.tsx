@@ -1,24 +1,45 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import './styles.scss'
 import { moveLeftCharacter } from '../../selectors/characterAnimations/moveCharacter';
+import { SyntheticEvent} from 'react';
 
 function VisitorMessage() {
 
-  console.log('Current pathname:', window.location.pathname);
-  function handleClick() {
-    if (window.location.pathname.includes('/introduce')) {
-      console.log('Path includes "introduce"');
+  const [text, setText] = useState('');
+
+  function handleClick(e: SyntheticEvent) {
+
+    const target = e.target as HTMLElement;
+    
+    if (target.innerText && target.innerText.includes('Qui est tu ?')) {
       return;
     } else {
-      console.log(window.location);
       moveLeftCharacter();
     }
   }
 
+  useEffect(() => {
+
+    const originalText = `Bonjour, que souhaitez vous faire ?`;
+
+    let counter = 0;
+    const interval = setInterval(() => {
+      setText(originalText.substring(0, counter));
+      counter++;
+
+      if (counter > originalText.length) {
+        clearInterval(interval);
+      }
+    }, 50); // Vitesse de frappe en millisecondes
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="message">
       <p className="message-content">
-          Bonjour, Que souhaitez vous faire ?
+        {text}
       </p>
     
       <ul className='message-choice'>
