@@ -6,7 +6,7 @@ function VisitorMessage() {
 
   console.log('Current pathname:', window.location.pathname);
   function handleClick() {
-    if (window.location.pathname.includes('/Ivy/introduce')) {
+    if (window.location.pathname.includes('/introduce')) {
       console.log('Path includes "introduce"');
       return;
     } else {
@@ -22,9 +22,9 @@ function VisitorMessage() {
       </p>
     
       <ul className='message-choice'>
-        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/Ivy/connexion" >Me connecter</Link ></li>
-        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/Ivy/signup" >M'inscrire</Link ></li>
-        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/Ivy/introduce">Qui est tu ?</Link ></li>
+        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/connexion" >Me connecter</Link ></li>
+        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/signup" >M'inscrire</Link ></li>
+        <li className='message-choice-li'><Link onClick={handleClick} className='message-choice-link' to="/introduce">Qui est tu ?</Link ></li>
       </ul>
     </div>
   );

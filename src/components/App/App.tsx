@@ -15,7 +15,7 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === '/Ivy/') {
+    if (location.pathname === '/') {
       moveCharacterToInitialPosition();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -27,10 +27,10 @@ function App() {
       <div className="scene">
         <Character />
         <Routes>
-          {isConnected ? "" : <Route path='/Ivy/' element={<VisitorMessage />}/>}
-          <Route path='/Ivy/connexion' element={<Connexion />}/>
-          <Route path='/Ivy/signup' element={<SignUp />}/>
-          <Route path='/Ivy/introduce' element={<Introduce />}/>
+          {isConnected ? "" : <Route path='/' element={<VisitorMessage />}/>}
+          <Route path='/connexion' element={<Connexion />}/>
+          <Route path='/signup' element={<SignUp />}/>
+          <Route path='/introduce' element={<Introduce />}/>
         </Routes>
       </div>
     </>
