@@ -1,7 +1,7 @@
 import Character from '../Character/Character';
 import NavBar from '../NavBar/Navbar';
 import {Routes, Route } from "react-router-dom";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Connexion from '../Connexion/Connexion';
 import { moveCharacterToInitialPosition } from '../../selectors/characterAnimations/moveCharacter';
@@ -11,7 +11,7 @@ import Introduce from '../Introduce/Introduce';
 
 function App() {
 
-  const isConnected = false
+  const [isConnected, setIsConnected] = useState<boolean>(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function App() {
         <Character />
         <Routes>
           {isConnected ? "" : <Route path='/' element={<VisitorMessage />}/>}
-          <Route path='/connexion' element={<Connexion />}/>
+          <Route path='/connexion' element={<Connexion setIsConnected={setIsConnected}/>}/>
           <Route path='/signup' element={<SignUp />}/>
           <Route path='/introduce' element={<Introduce />}/>
         </Routes>
