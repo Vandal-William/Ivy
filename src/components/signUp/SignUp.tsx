@@ -4,7 +4,7 @@ function SignUp() {
 
   return (
     <div className="base-container">
-      <Link className='cancel-link' to='/Ivy/'><span className='close'>X</span></Link>
+      <Link className='cancel-link' to='/'><span className='close'>X</span></Link>
       <h1 className='title'>Inscription</h1>
       <form className='form'>
         <label className='form-label' htmlFor="email">Adresse mail</label>
