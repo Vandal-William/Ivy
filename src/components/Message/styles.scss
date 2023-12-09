@@ -15,14 +15,15 @@
     &-content {
       margin-top: 15px;
       padding: 10px;
+      
     }
   
     &::before {
       content: '';
       position: absolute;
-      top: 70px;
-      right: 100%;
-      border-width: 50px 50px 50px 0;
+      top: 5px;
+      right: 101%;
+      border-width: 30px 50px 30px 0;
       border-style: solid;
       border-color: transparent #1a1a1a transparent transparent;
     }
