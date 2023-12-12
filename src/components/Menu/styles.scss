@@ -1,0 +1,62 @@
+.menu{
+  
+  &-li{
+    width: 60px;
+    height: 60px;
+    background: #1a1a1a;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 55%;
+    left: 48%;
+
+  }
+
+  &-li > img{
+    width: 100%;
+  }
+}
+
+
+.menu-ul > li:nth-child(1) {
+    top: 38%;
+    left: 20%;
+    animation: appearCollection 1s forwards;
+    
+}
+.menu-ul > li:nth-child(2) {
+  
+    animation: appeardisconnect 1s forwards;
+    
+}
+
+@keyframes appearCollection{
+    from {
+      opacity: 0;
+      top: 55%;
+      left: 48%;
+     
+    }
+    to {
+      opacity: 1;
+      left: 28%;
+    }
+  }
+
+  @keyframes appeardisconnect{
+    from {
+      opacity: 0;
+      top: 55%;
+      left: 48%;
+     
+    }
+    to {
+      opacity: 1;
+      left: 25%;
+    }
+  }

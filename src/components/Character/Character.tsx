@@ -1,18 +1,34 @@
 import './styles.scss';
 import { eyesBlinking } from '../../selectors/characterAnimations/eyesBlinking';
+import { useEffect } from 'react';
 
+interface CharacterProps {
+    viewUserMessage: boolean;
+    isConnected: boolean;
+    isClickable: boolean;
+    setViewUserMessage : React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-function Character () {
+function Character ({viewUserMessage, setViewUserMessage, isConnected, isClickable}: CharacterProps) {
 
-    eyesBlinking();
+    useEffect(() => {
+        eyesBlinking();
+
+    }, [])
+
+    const handleClick = () => {
+       if(isConnected && isClickable) {
+        setViewUserMessage(!viewUserMessage);
+       }
+    }
 
     return (
         <>
             <div className="character">
-            <div className="character-body"></div>
-                <div className="dress"></div>
-            <div className="hand"></div>
-                <div className="head">
+            <div className="character-body" style={isClickable ? {cursor:'pointer'} : {}} onClick={handleClick}></div>
+                <div className="dress" style={isClickable ? {cursor:'pointer'} : {}} onClick={handleClick}></div>
+            <div className="hand" style={isClickable ? {cursor:'pointer'} : {}} onClick={handleClick}></div>
+                <div className="head" style={isClickable ? {cursor:'pointer'} : {}} onClick={handleClick}>
                     <div className="neck"></div>
                     <div className="ear"></div>
                     <div className="ear"></div>

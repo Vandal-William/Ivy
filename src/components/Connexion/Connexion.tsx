@@ -1,6 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { SyntheticEvent} from 'react';
-import userData from '../../Data/data.json';
+
+interface User {
+  name: string;
+  mail: string;
+  password: string;
+}
 
 interface ConnexionProps {
   setIsConnected: React.Dispatch<React.SetStateAction<boolean>>;
@@ -10,22 +15,18 @@ interface ConnexionProps {
   setConnectionAttempt: React.Dispatch<React.SetStateAction<number>>;
   isButtonDisabled : boolean; 
   setIsButtonDisabled : React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-interface User {
-  name: string;
-  mail: string;
-  password: string;
+  data: User[]
 }
 
 function Connexion({
-   setIsConnected, 
+  setIsConnected,
    addErrorMessage, 
    clearErrors, 
    connectionAttempt, 
    setConnectionAttempt,
    isButtonDisabled,
-  setIsButtonDisabled
+  setIsButtonDisabled,
+  data
   }: ConnexionProps) {
 
   const navigate = useNavigate();
@@ -38,11 +39,12 @@ function Connexion({
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
     
-    const foundUser = userData.users.find((user: User) => user.mail === email && user.password === password);
+    const foundUser = data.find((user: User) => user.mail === email && user.password === password);
     
     if (foundUser) {
-
-      setIsConnected(true);
+      sessionStorage.setItem('username', foundUser.name);
+      sessionStorage.setItem('IsConnected', "true");
+      setIsConnected(true)
       navigate('/'); 
       clearErrors();
 

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import './styles.scss'
 import { SyntheticEvent} from 'react';
 
@@ -9,6 +10,7 @@ interface ResettingProps {
 
 function ResettingMessage({setConnectionAttempt, setIsButtonDisabled}: ResettingProps) {
 
+    const navigate = useNavigate();
     const handleSubmit = (e: SyntheticEvent) => {
         e.preventDefault()
     }
@@ -19,6 +21,7 @@ function ResettingMessage({setConnectionAttempt, setIsButtonDisabled}: Resetting
         if (response.value === "true"){
             setConnectionAttempt(0);
             setIsButtonDisabled(false);
+            navigate('/reset-query');
         }else{
             setConnectionAttempt(0);
             setIsButtonDisabled(false);
