@@ -5,11 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 interface MenuProps {
     setIsConnected: React.Dispatch<React.SetStateAction<boolean>>;
-    setisClickable: React.Dispatch<React.SetStateAction<boolean>>;
-    setIsOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function Menu({setIsConnected, setisClickable, setIsOpenMenu}: MenuProps) {
+function Menu({setIsConnected}: MenuProps) {
 
     const navigate = useNavigate()
 
@@ -17,15 +15,11 @@ function Menu({setIsConnected, setisClickable, setIsOpenMenu}: MenuProps) {
         sessionStorage.setItem('username', '');
         sessionStorage.setItem('IsConnected', "false");
         setIsConnected(false);
-        setIsOpenMenu(false);
-        setisClickable(false);
         navigate('/')
     
     }
 
     const handleCollections = () => {
-        setisClickable(false);
-        setIsOpenMenu(false);
         navigate('/collections');
     }
   return (

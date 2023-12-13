@@ -28,32 +28,23 @@ type RouteParams = | {
 } | Record<string, string | undefined> 
 
 interface CollectionProps {
-    setIsOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
-    setisClickable: React.Dispatch<React.SetStateAction<boolean>>;
     data: Document[]
     collection: Collection[]
 }
 
-function Documents({setIsOpenMenu, data, setisClickable, collection}: CollectionProps) {
+function Documents({data, collection}: CollectionProps) {
 
   const { id } = useParams<RouteParams>();
 
   const userCollection : Collection | undefined = collection.find(col => col.id.toString() === id);
   const userDocument = data.filter(document => document.collectionsId.toString() === id);
-  console.log(userDocument)
-  console.log(userCollection)
-
-    const handleClick = () => {
-        setIsOpenMenu(true);
-        setisClickable(true);
-    }
 
   return (
   
     <div className="base-container">
       <div className='flex'>
         <Link className='return' to='/collections'><span> Collections </span></Link>
-        <Link onClick={handleClick} className='cancel-link' to='/'><span className='close'>X</span></Link>
+        <Link className='cancel-link' to='/'><span className='close'>X</span></Link>
       </div>
       <h3 className='title'>{userCollection ? userCollection.name : "Document"}</h3>
       <form className='form'>

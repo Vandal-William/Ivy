@@ -11,27 +11,19 @@ interface Collection {
 }
 
 interface CollectionProps {
-    setIsOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
-    setisClickable: React.Dispatch<React.SetStateAction<boolean>>;
     data: Collection[]
 }
 
-function Collections({setIsOpenMenu, data, setisClickable}: CollectionProps) {
+function Collections({data}: CollectionProps) {
 
   const storageUserId = sessionStorage.getItem('userId'); 
 
   const userCollection = data.filter(collections => collections.userId.toString() === storageUserId);
-  console.log(userCollection)
-
-    const handleClick = () => {
-        setIsOpenMenu(true);
-        setisClickable(true);
-    }
 
   return (
   
     <div className="base-container">
-      <Link onClick={handleClick} className='cancel-link' to='/'><span className='close'>X</span></Link>
+      <Link className='cancel-link' to='/'><span className='close'>X</span></Link>
       <h3 className='title'>Collections</h3>
       <form className='form'>
         <input style={{width:"78%"}}  className='form-input' type="search" name="search" placeholder='Rechercher une collection'/>
