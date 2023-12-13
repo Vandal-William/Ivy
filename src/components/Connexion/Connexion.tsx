@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { SyntheticEvent} from 'react';
 
 interface User {
+  id: number;
   name: string;
   mail: string;
   password: string;
@@ -44,6 +45,7 @@ function Connexion({
     if (foundUser) {
       sessionStorage.setItem('username', foundUser.name);
       sessionStorage.setItem('IsConnected', "true");
+      sessionStorage.setItem('userId', `${foundUser.id}`);
       setIsConnected(true)
       navigate('/'); 
       clearErrors();

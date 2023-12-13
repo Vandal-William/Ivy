@@ -1,9 +1,110 @@
 {
     "users":[
         {
+            "id": 1,
             "name": "William",
             "mail": "vandal.william@gmail.com",
             "password": "1234"
+        }
+    ],
+    "collections":[
+        {
+            "id": 1,
+            "name":"React",
+            "description": "Documentation sur react et react TypeScript, avec rédux, hooks de A à Z",
+            "tag":"Tech",
+            "userId": 1  
+        },
+        {
+            "id": 2,
+            "name":"Javascript",
+            "description": "Documentation sur javascript, les variables, les tableaux, les boucles, les condition, les eventlisteners, les requêtes http avec fetch et axios.",
+            "tag":"Tech",
+            "userId": 1
+        },
+        {
+            "id": 3,
+            "name":"PHP",
+            "description": "Documentation sur PHP, synthaxe de base, conception d'api rest, gestion des sessions utilisateur",
+            "tag":"Tech",
+            "userId": 1
+        },
+        {
+            "id": 4,
+            "name":"Apex",
+            "description": "Documentation complète sur l'apex",
+            "tag":"Tech",
+            "userId": 1
+        },
+        {
+            "id": 5,
+            "name":"Anais",
+            "description": "Documentation Fonctionnel de L'application anais",
+            "tag":"App",
+            "userId": 1
+        }
+
+    ],
+    "documents":[
+        {
+            "id": 1,
+            "name":"Rédux",
+            "description": "Comment utilisé redux ?",
+            "url": "",
+            "content": "contenu du document",
+            "tag":"State",
+            "userId": 1,
+            "collectionsId": 1
+        },
+        {
+            "id": 2,
+            "name":"React TS Les interfaces",
+            "description": "Comment créer des interfaces",
+            "url": "",
+            "content": "contenu du document",
+            "tag":"TypeScript",
+            "userId": 1,
+            "collectionsId": 1
+        },
+        {
+            "id": 3,
+            "name":"Requêtes HTTP",
+            "description": "Utilisation de axios",
+            "url": "",
+            "content": "contenu du document",
+            "tag":"Axios",
+            "userId": 1,
+            "collectionsId": 2
+        },
+        {
+            "id": 4,
+            "name":"Api de synthèse vocal",
+            "description": "comment utiliser la synthèse vocale avec javascript",
+            "url": "",
+            "content": "contenu du document",
+            "tag":"text to speech",
+            "userId": 1,
+            "collectionsId": 2
+        },
+        {
+            "id": 5,
+            "name":"Symfony",
+            "description": "Comment démmarer un projet avec Symfony",
+            "url": "",
+            "content": "contenu du document",
+            "tag":"Framework",
+            "userId": 1,
+            "collectionsId": 3
+        },
+        {
+            "id": 6,
+            "name":"Package php",
+            "description": "Comment installer un package dans un projet PHP",
+            "url": "",
+            "content": "contenu du document",
+            "tag":"Composer",
+            "userId": 1,
+            "collectionsId": 3
         }
     ]
 }
