@@ -12,11 +12,14 @@ interface MenuProps {
 function Menu({setIsConnected, setisClickable, setIsOpenMenu}: MenuProps) {
 
     const navigate = useNavigate()
+
     const handleDisconnect = () => {
         sessionStorage.setItem('username', '');
         sessionStorage.setItem('IsConnected', "false");
         setIsConnected(false);
+        setIsOpenMenu(false);
         setisClickable(false);
+        navigate('/')
     
     }
 

@@ -12,6 +12,7 @@
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75); /* Ombre pour la profondeur */
     opacity: 0; /* Initiallement invisible */
     animation: appearAnimation 1s ease forwards 1s; 
+    overflow: hidden;
   }
   
   .title {
