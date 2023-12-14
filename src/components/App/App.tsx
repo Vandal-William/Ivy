@@ -16,6 +16,8 @@ import userData from '../../Data/data.json';
 import Menu from '../Menu/Menu';
 import Collections from '../Collections/Collections';
 import Documents from '../Collections/Documents';
+import OneDocument from '../Collections/OneDocument';
+import TechnologyWatch from '../TechnologyWatch/TechnologyWatch';
 
 interface ErrorMessage {
   message: string;
@@ -23,9 +25,8 @@ interface ErrorMessage {
 }
 
 function App() {
-  const isInSession = Boolean(sessionStorage.getItem('IsConnected'));
-  const [isConnected, setIsConnected] = useState<boolean>(false);
-  const [isOpenMenu, setIsOpenMenu] = useState<boolean>(true);
+  const isInSession = sessionStorage.getItem('IsConnected');
+  const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
   const [error, setError] = useState<ErrorMessage[]>([]);
   const [connectionAttempt, setConnectionAttempt] = useState(0);
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
@@ -46,7 +47,7 @@ function App() {
   useEffect(() => {
     if (location.pathname === '/') {
       moveCharacterToInitialPosition();
-      if(isConnected || isInSession){
+      if(isInSession === 'true'){
         setIsOpenMenu(true)
       }
     }else{
@@ -72,11 +73,11 @@ function App() {
           setIsButtonDisabled={setIsButtonDisabled}
           /> : ""}
 
-        {isOpenMenu ? <Menu setIsConnected={setIsConnected} /> : ""}
+        {isOpenMenu ? <Menu setIsOpenMenu={setIsOpenMenu} /> : ""}
 
         <Routes>
 
-          <Route path='/' element={isConnected || isInSession ?  "" : <VisitorMessage />}/>
+         { isInSession === 'true' ?  "" : <Route path='/' element={<VisitorMessage />}/>}
 
           <Route path='/connexion' element={
             <Connexion 
@@ -87,17 +88,17 @@ function App() {
             isButtonDisabled = {isButtonDisabled}
             setIsButtonDisabled = {setIsButtonDisabled}
             data={userData.users}
-            setIsConnected={setIsConnected}
             
             />
           }
           />
-          
+          <Route path='/Watch' element={<TechnologyWatch />}/>
           <Route path='/signup' element={<SignUp />}/>
           <Route path='/introduce' element={<Introduce />}/>
           <Route path='/reset-query' element={<MailConfirm />}/>
+          <Route path='/document/:id' element={<OneDocument data={userData.documents} collection={userData.collections}/>}/>
           <Route path='/collections/:id' element={<Documents data={userData.documents} collection={userData.collections}/>}/>
-          <Route path='/collections' element={isConnected || isInSession ?  <Collections data={userData.collections}/> :  
+          <Route path='/collections' element={isInSession === 'true' ?  <Collections data={userData.collections}/> :  
           <Connexion 
             addErrorMessage={addErrorMessage} 
             clearErrors={clearErrors}
@@ -106,7 +107,6 @@ function App() {
             isButtonDisabled = {isButtonDisabled}
             setIsButtonDisabled = {setIsButtonDisabled}
             data={userData.users}
-            setIsConnected={setIsConnected}
             />}
           />
         </Routes>

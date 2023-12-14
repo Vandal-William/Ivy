@@ -4,18 +4,17 @@ import './styles.scss';
 import { useNavigate } from 'react-router-dom';
 
 interface MenuProps {
-    setIsConnected: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function Menu({setIsConnected}: MenuProps) {
+function Menu({setIsOpenMenu}: MenuProps) {
 
     const navigate = useNavigate()
 
     const handleDisconnect = () => {
         sessionStorage.setItem('username', '');
         sessionStorage.setItem('IsConnected', "false");
-        setIsConnected(false);
-        navigate('/')
+        setIsOpenMenu(false)
     
     }
 

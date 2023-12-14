@@ -9,7 +9,6 @@ interface User {
 }
 
 interface ConnexionProps {
-  setIsConnected: React.Dispatch<React.SetStateAction<boolean>>;
   addErrorMessage: (message: string) => void;
   clearErrors: () => void;
   connectionAttempt: number;
@@ -20,7 +19,6 @@ interface ConnexionProps {
 }
 
 function Connexion({
-  setIsConnected,
    addErrorMessage, 
    clearErrors, 
    connectionAttempt, 
@@ -46,7 +44,6 @@ function Connexion({
       sessionStorage.setItem('username', foundUser.name);
       sessionStorage.setItem('IsConnected', "true");
       sessionStorage.setItem('userId', `${foundUser.id}`);
-      setIsConnected(true)
       navigate('/'); 
       clearErrors();
 
