@@ -19,12 +19,14 @@ import Documents from '../Collections/Documents';
 import OneDocument from '../Collections/OneDocument';
 import TechnologyWatch from '../TechnologyWatch/TechnologyWatch';
 
+
 interface ErrorMessage {
   message: string;
 
 }
 
 function App() {
+
   const isInSession = sessionStorage.getItem('IsConnected');
   const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
   const [error, setError] = useState<ErrorMessage[]>([]);
@@ -87,8 +89,6 @@ function App() {
             setConnectionAttempt={setConnectionAttempt}
             isButtonDisabled = {isButtonDisabled}
             setIsButtonDisabled = {setIsButtonDisabled}
-            data={userData.users}
-            
             />
           }
           />
@@ -106,7 +106,6 @@ function App() {
             setConnectionAttempt={setConnectionAttempt}
             isButtonDisabled = {isButtonDisabled}
             setIsButtonDisabled = {setIsButtonDisabled}
-            data={userData.users}
             />}
           />
         </Routes>
