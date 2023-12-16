@@ -37,7 +37,7 @@ function OneDocument({data, collection}: CollectionProps) {
     const { id } = useParams<RouteParams>();
 
     const userDocument: Document | undefined = data.find(document => document.id.toString() === id);
-    const userCollection = collection.find(col => col.id === userDocument.collectionsId) as Collection | undefined;
+    const userCollection = userDocument ? collection.find(col => col.id === userDocument.collectionsId) as Collection : undefined;
 
 
   return (
