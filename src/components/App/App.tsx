@@ -13,10 +13,12 @@ import { moveLeftCharacter } from '../../selectors/characterAnimations/moveChara
 import ResettingMessage from '../ResettingMessage/ResettingMessage';
 import MailConfirm from '../MailConfirm/MailConfirm';
 import userData from '../../Data/data.json';
-import UserMassage from '../Message/UserMassage';
 import Menu from '../Menu/Menu';
 import Collections from '../Collections/Collections';
 import Documents from '../Collections/Documents';
+import OneDocument from '../Collections/OneDocument';
+import TechnologyWatch from '../TechnologyWatch/TechnologyWatch';
+
 
 interface ErrorMessage {
   message: string;
@@ -24,10 +26,9 @@ interface ErrorMessage {
 }
 
 function App() {
-  const isInSession = Boolean(sessionStorage.getItem('IsConnected'));
-  const [isConnected, setIsConnected] = useState<boolean>(false);
-  const [isClickable, setisClickable] = useState<boolean>(false);
-  const [isOpenMenu, setIsOpenMenu] = useState<boolean>(true);
+
+  const isInSession = sessionStorage.getItem('IsConnected');
+  const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
   const [error, setError] = useState<ErrorMessage[]>([]);
   const [connectionAttempt, setConnectionAttempt] = useState(0);
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
@@ -48,12 +49,8 @@ function App() {
   useEffect(() => {
     if (location.pathname === '/') {
       moveCharacterToInitialPosition();
-      if(isConnected || isInSession){
-        setisClickable(true);
-      
-      }
-      if(isConnected === false || isInSession === false){
-        setisClickable(false);
+      if(isInSession === 'true'){
+        setIsOpenMenu(true)
       }
     }else{
       setIsOpenMenu(false)
@@ -70,11 +67,7 @@ function App() {
 
       <div className="scene">
 
-        <Character 
-          isOpenMenu={isOpenMenu}
-          setIsOpenMenu={setIsOpenMenu} 
-          isClickable={isClickable}
-        />
+        <Character />
 
         {error.length > 0 ? <ErrorMessage error={error} /> : ""}
         {connectionAttempt === 3 ? <ResettingMessage  
@@ -82,18 +75,11 @@ function App() {
           setIsButtonDisabled={setIsButtonDisabled}
           /> : ""}
 
-        {isOpenMenu ? 
-          <Menu 
-          setIsConnected={setIsConnected} 
-          setisClickable={setisClickable} 
-          setIsOpenMenu={setIsOpenMenu} 
-
-          /> : ""
-        }
+        {isOpenMenu ? <Menu setIsOpenMenu={setIsOpenMenu} /> : ""}
 
         <Routes>
 
-          {isConnected && isInSession ?  <Route path='/' element={<UserMassage />}/> : <Route path='/' element={<VisitorMessage />}/>}
+         { isInSession === 'true' ?  "" : <Route path='/' element={<VisitorMessage />}/>}
 
           <Route path='/connexion' element={
             <Connexion 
@@ -103,18 +89,16 @@ function App() {
             setConnectionAttempt={setConnectionAttempt}
             isButtonDisabled = {isButtonDisabled}
             setIsButtonDisabled = {setIsButtonDisabled}
-            data={userData.users}
-            setIsConnected={setIsConnected}
-            
             />
           }
           />
-          
+          <Route path='/Watch' element={<TechnologyWatch />}/>
           <Route path='/signup' element={<SignUp />}/>
           <Route path='/introduce' element={<Introduce />}/>
           <Route path='/reset-query' element={<MailConfirm />}/>
-          <Route path='/collections/:id' element={<Documents setIsOpenMenu={setIsOpenMenu} setisClickable={setisClickable} data={userData.documents} collection={userData.collections}/>}/>
-          <Route path='/collections' element={isConnected || isInSession ?  <Collections setIsOpenMenu={setIsOpenMenu} data={userData.collections} setisClickable={setisClickable} /> :  
+          <Route path='/document/:id' element={<OneDocument data={userData.documents} collection={userData.collections}/>}/>
+          <Route path='/collections/:id' element={<Documents data={userData.documents} collection={userData.collections}/>}/>
+          <Route path='/collections' element={isInSession === 'true' ?  <Collections data={userData.collections}/> :  
           <Connexion 
             addErrorMessage={addErrorMessage} 
             clearErrors={clearErrors}
@@ -122,8 +106,6 @@ function App() {
             setConnectionAttempt={setConnectionAttempt}
             isButtonDisabled = {isButtonDisabled}
             setIsButtonDisabled = {setIsButtonDisabled}
-            data={userData.users}
-            setIsConnected={setIsConnected}
             />}
           />
         </Routes>
